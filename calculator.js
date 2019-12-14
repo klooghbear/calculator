@@ -12,6 +12,8 @@
 
 //My Calculator should have several decimal places of precision when it comes to rounding ( note that there is no exact standard, but your should be able to handle calculations like 2 / 7 with reasonable precision to at least 4 decimal places
 
+//
+
 //create array/object to store information
 var display = [
     
@@ -45,5 +47,11 @@ function quotient(a, b){
 
 //function for displayAnswer
 
+sum(9, 10)
 
+difference(10, 9)
+
+product(5, 5)
+
+quotient(8, 2)
 
