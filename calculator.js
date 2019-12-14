@@ -13,14 +13,29 @@
 //My Calculator should have several decimal places of precision when it comes to rounding ( note that there is no exact standard, but your should be able to handle calculations like 2 / 7 with reasonable precision to at least 4 decimal places
 
 //create array/object to store information
+var display = [
+    
+]
 
 //function for addition
+function sum(a, b) {
+    return a + b;
+}
 
 //function for subtraction
+function difference(a, b) {
+    return a - b;
+}
 
 //function for multiplication
+function product(a, b) {
+    return a * b;
+}
 
 //function for division
+function quotient(a, b){
+    return a / b;
+}
 
 //function for equals?//
 
