@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
     <link href="styles/calculator.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/styles/digital-7.ttf">
+    <script async="" src="calculator.js"></script>
 
     <title>Calculator</title>
 </head>
@@ -19,42 +20,42 @@
         <div class="calculator">
             <p id="title">CALCULATOR</p>
             <p id="tagline">SPRINT 5</p>
-            <input type="text" id="answer" disabled>
-
+            
+            <input type="text" id="display">
+            
             <div>
                 <div class="row">
                     <button class="ctrl" id="allClear">AC</button>
                     <button class="ctrl" id="clear">CE</button>
-                    <button id="%">%</button>
-                    <button id="/">÷</button>
+                    <button id="modulus">%</button>
+                    <button id="divide">÷</button>
                 </div>
                 <div class="row">
-                    <button id="7">7</button>
-                    <button id="8">8</button>
-                    <button id="9">9</button>
-                    <button id="*">x</button>
+                    <button class="number" id="seven">7</button>
+                    <button class="number" id="eight">8</button>
+                    <button class="number" id="nine">9</button>
+                    <button id="multiply">x</button>
                 </div>
                 <div class="row">
-                    <button id="4">4</button>
-                    <button id="5">5</button>
-                    <button id="6">6</button>
-                    <button id="-">-</button>
+                    <button class="number" id="four">4</button>
+                    <button class="number" id="five">5</button>
+                    <button class="number" id="six">6</button>
+                    <button id="subtract">-</button>
                 </div>
                 <div class="row">
-                    <button id="1">1</button>
-                    <button id="2">2</button>
-                    <button id="3">3</button>
-                    <button class="tall" id="+">+</button>
+                    <button class="number" id="one">1</button>
+                    <button class="number" id="two">2</button>
+                    <button class="number" id="three">3</button>
+                    <button class="tall" id="add">+</button>
                 </div>
                 <div class="row">
-                    <button>0</button>
-                    <button>.</button>
-                    <button>=</button>
+                    <button class="number" id="zero">0</button>
+                    <button id="decimal">.</button>
+                    <button id="equals">=</button>
                 </div>
             </div>
         </div>
     </main>
-    <script async="" src="calculator.js"></script>
 </body>
 
 </html>
