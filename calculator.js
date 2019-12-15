@@ -1,57 +1,65 @@
-//In any order, I should be able to add, stubtract, multiply, and divide a chain of numbers of any length, and whien I hit =, the correct result should be shown in the element with the id of display
 
-//When inputting numbers, my calculator should not allow a number to begin with mupltiple zeros
+//A calculator is a device in which a user enters a series of commands in order to calculates mathematical equations.
+//User enters a series of numbers, a math operator and an "=" button in order to solve an equation.
 
-//When the decimal element is clicked, a should append to the currently displayed value; two . in one number should not be accepted.
+document.addEventListener('DOMContent', initialiseCalculator)
 
-//I should be able to perform and opeation (+, - , *. /) on numbers containing decimal points
+//create variables to store information into an array, store result of an equation and the current number
+let entries = [];
+let currentNumber = '';
+let result = 0;
 
-//If 2 or more operatirs are entered consecutively, the operation performed should be the last operator entered (excluding the negative (-)sign). For example if 5 + * 7 = is entered the result should be 35 (ie 5*7); if 5 * - 5 = is entered the result should be -25(ie. 5 * (-5))
-
-//Pressing an operator immediately following = should start a new calculation that operates on the result of the previous evaluation
-
-//My Calculator should have several decimal places of precision when it comes to rounding ( note that there is no exact standard, but your should be able to handle calculations like 2 / 7 with reasonable precision to at least 4 decimal places
-
-//
-
-//create array/object to store information
-var display = [
-    
-]
-
-//function for addition
-function sum(a, b) {
-    return a + b;
+//initialise the display which will include functions
+function initialiseCalculator() {
+    inputNumber();
 }
 
-//function for subtraction
-function difference(a, b) {
-    return a - b;
+//function to get number input based on user click
+function inputNumber() {
+    let number = document.getElementsByClassName("number");
+    for(i = 0; i < number.length; i++){
+        number[i].addEventListener('click', clickNumber);
+    }
 }
 
-//function for multiplication
-function product(a, b) {
-    return a * b;
+//function to return number output based on input
+function clickNumber(event) {
+    let value = event.target.innerHTML;
+    currentNumber = currentNumber + value;
+    entries.push(currentNumber)
+    updateDisplay();
 }
 
-//function for division
-function quotient(a, b){
-    return a / b;
+//function to get operator input based on user click 
+function inputOperator() {
+    let operator = document.getElementsByClassName('operator');
+    for(i = 0; i < operator.length; i++){
+        operator[i].addEventListener('click', clickOperator);
+    }
 }
 
-//function for equals?//
+function clickOperator(event) {
+    let mathOperator = event.target.innerHTML;
+    entries.push(operator);
+    currentNumber = "";
+    updateDisplay();
+}
 
-//function for allClear
+//function to display the string on screen
+function updateDisplay() {
+    let.display = document.getElementById('display');
+    display.innerHTML = currentNumber;
+}
 
-//function for clearEntry
+//function for allClear to wipe entries
+function allClear () {
+    currentNumber = '';
+    entries = [];   
+    display.value = 0;
+}
 
-//function for displayAnswer
-
-sum(9, 10)
-
-difference(10, 9)
-
-product(5, 5)
-
-quotient(8, 2)
-
+//clear the current working display
+function clear () {
+    currentNumber = '';
+    display.value = 0;
+}
