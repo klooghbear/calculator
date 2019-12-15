@@ -44,13 +44,21 @@ body, html {
     text-indent: -63%;
 }
 
-#answer {
+#display {
     box-shadow: inset 1px 1px 15px 1px rgb(56, 82, 54);
     width: 230px;
     height: 38px;
     background-color: rgb(171, 190, 149);
     margin-bottom: 3px;
-    font-family: digital-7;
+}
+
+input[type="text"]{
+    font-size: 25px;
+    direction: rtl;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 25px;
+    font-family: 'Iceland', cursive;
 }
 
 .row {
