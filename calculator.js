@@ -12,7 +12,7 @@ let operators = document.getElementsByClassName("operator");
 
 //create variables to store information
 let entries = [];
-let currentNumber = '0';
+let currentNumber = '';
 let tempVal;
 
 //Add event listeners to all buttons
@@ -25,6 +25,15 @@ for(let i = 0; i < operators.length; i++){
 }
 
 //Create a function that will update display
+function updateDisplay (event) {
+    let buttonClick = event.target.innerText;
+    if(display === "0"){
+        display = "";
+    }
+    //update content of button clicked
+    display += buttonClick;
+    displayText.innerText = display;
+}
 
 //Create function that will perform the mathematical operation for us
 
