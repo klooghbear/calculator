@@ -4,18 +4,25 @@
 
 
 //Create varaiables to help store targeted DOM Elements
-let display = document.addEventListener();
-let decimal = document.addEventListener();
-let clear = document.addEventListener();
-let numbers = document.addEventListener();
-let operator = document.addEventListener();
+let display = document.getElementById("display");
+let decimal = document.getElementById("decimal");
+let clear = document.getElementById("clear");
+let numbers = document.getElementsByClassName("number");
+let operators = document.getElementsByClassName("operator");
 
 //create variables to store information
 let entries = [];
-let currentNumber = '';
-let result = 0;
+let currentNumber = '0';
+let tempVal;
 
 //Add event listeners to all buttons
+for(let i = 0; i < numbers.length; i++){
+    numbers[i] = document.addEventListener('click') //,function)
+}
+
+for(let i = 0; i < operators.length; i++){
+    operators[i] = document.addEventListener('click') //,function)
+}
 
 //Create a function that will update display
 
