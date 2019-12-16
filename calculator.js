@@ -4,56 +4,91 @@
 
 //Create varaiables to help store targeted DOM Elements
 let display = document.getElementById('display');
-let decimal = document.getElementById('decimal');
-let AC = document.getElementById('allClear');
-let CE = document.getElementById('clear');
-
-//create variables to store information
 let entries = [];
-let numberString = '0';
+let numberString = '';
 let isPreviousResult = false;
 
-//Add event listeners to all numbers
-function listenForNumbers() {
-    let numbers = document.getElementsByClassName('number');
-    for (let i = 0; i < numbers.length; i++) {
-        numbers[i] = document.addEventListener('click', updateNumber);
+listen();
+
+function listen() {
+    document.addEventListener('click', getButton)
+}
+
+function getButton() {
+    let button = event.target.value;
+
+    if (!isNaN(button) || button === '.') {
+        number(button);
+    } else if (button === 'AC') {
+        allClear();
+    } else if (button === 'CE') {
+        clear();
+    } else if (button === '=') {
+        calculate();
+    } else {
+        storeNumber(button);
     }
 }
 
-//Add event listener for all operators
-function listenForOperators() {
-    let operators = document.getElementsByClassName('opertor');
-    for (let i = 0; i < operators.length; i++) {
-        operators[i] = document.addEventListener('click', calculate) //,function)
+function number(button) {
+    if (button === '.' && numberString.includes('.')) {
+        return;
+    } else if (numberString.charAt(0) === '0' && numberString.length === 1 && button === '0') {
+        return;
+    } else {
+        if (isPreviousResult === true) {
+            numberString = '';
+            isPreviousResult = false;
+        }
+        numberString += button;
+        display.value = numberString;
     }
 }
 
-//Create a function that will update display
-function updateNumber(event) {
-    let buttonClick = event.target.innerHTML;
-    numberString += buttonClick;
-    display.innerHTML = numberString;
+function allClear() {
+    numberString = '';
+    entries = [];
+    display.value = '0';
 }
 
-//Create function that will perform the mathematical operation for us
+function clear() {
+    numberString = '';
+    display.value = '0';
+}
+
+function storeNumber(button) {
+
+    if (numberString === '' && entries.length === 0) {
+        return;
+    } else if (numberString === '') {
+        entries.length = entries.length - 1;
+        entries.push(button);
+    } else {
+        entries.push(numberString);
+        entries.push(button);
+        numberString = '';
+    }
+}
+
+
 function calculate() {
 
     entries.push(numberString)
-
     let currentNumber = Number(entries[0]);
-
     for (var i = 0; i < entries.length; i++) {
+        let mathOperator = entries[i];
         let nextNumber = Number(entries[i + 1]);
-        let mathOperator = entries[i]
+        
         if (mathOperator === '+') {
-            return currentNumber += nextNumber;
+            currentNumber += nextNumber;
         } else if (mathOperator === '-') {
-            return currentNumber -= nextNumber;
+            currentNumber -= nextNumber;
         } else if (mathOperator === '÷') {
-            return currentNumber /= nextNumber;
+            currentNumber /= nextNumber;
         } else if (mathOperator === 'x') {
-            return currentNumber *= nextNumber;
+            currentNumber *= nextNumber;   
+        } else if (mathOperator === '%') {
+            currentNumber %= nextNumber;
         }
     }
 
@@ -65,25 +100,4 @@ function calculate() {
     numberString = JSON.stringify(currentNumber);
     isPreviousResult = true;
     entries = [];
-}
-
-//function for allClear to wipe entries
-function allClear() {
-    numberString = '';
-    entries = [];
-    display.value = '0';
-}
-
-//clear the current working display
-function clear() {
-    numberString = '';
-    display.value = '0';
-}
-
-//Create a function that will insert decimal points
-function decimalPoint() {
-    if (!numberString.includes('.')) {
-        numberString += '.';
-    }
-    display.innerHTML = numberString;
 }
