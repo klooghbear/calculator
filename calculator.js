@@ -117,7 +117,7 @@ function calculate() {
             currentNumber *= nextNumber;
         //if modulus return    
         } else if (mathOperator === '%') {
-            currentNumber %= nextNumber;
+            currentNumber = (currentNumber / 100) * nextNumber;
         }
     }
 
